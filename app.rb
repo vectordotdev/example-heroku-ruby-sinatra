@@ -16,6 +16,11 @@ class App < Sinatra::Base
 
   configure :development, :production do
     logger = Timber::Logger.new(STDOUT)
+
+    # Uncomment these lines to send logs to your Timber account
+    # http_device = Timber::LogDevices::HTTP.new('my-timber-api-key')
+    # logger = Timber::Logger.new(http_device)
+
     logger.level = Logger::DEBUG if development?
     set :logger, logger
 
